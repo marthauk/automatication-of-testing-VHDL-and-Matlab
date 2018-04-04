@@ -1,3 +1,4 @@
+clear; clc;
 %delete('../jpeg.sim\sim_1\behav\output.txt');
 %if exist('m','var') < 1
     %delete(h)
@@ -8,7 +9,8 @@
     while valid_test_matrix == 0
         dim = randi(100);
         m = randi(200,dim);
-        m_inv=inv(m);
+        %m_inv=inv(m);
+        m_inv = gauss_jordan_inverse(m,'all');
         % since VHDL-implementation of inverse is working with integer
         % math, it is useful to have inverse-matrices with elements
         % that does not round to zero.
